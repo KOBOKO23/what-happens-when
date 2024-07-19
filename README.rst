@@ -225,6 +225,41 @@ DNS lookup
   the ``ARP process`` below for the default gateway IP.
 
 
+  DNS Resolution Process
+When you type a URL in the browser and hit enter, the browser needs to resolve
+the domain name to an IP address. This process involves several steps:
+
+``Browser Cache:`` The browser first checks its own cache to see if it has recently
+resolved the domain. If found, it uses the cached IP address.
+
+``Operating System Cache:`` If the browser cache misses, the browser queries the
+system's DNS cache.
+
+``Router Cache:`` The next step involves querying the local network router,
+which might have its own DNS cache.
+
+``ISP DNS Server:`` If the router does not have the IP cached, the query is
+forwarded to the ISP's DNS resolver. Here, the DNS resolution process becomes more complex:
+
+a. ``Recursive Query:`` The ISP's DNS resolver will perform a recursive query on
+   behalf of the browser. It will first check its cache, and if the IP address
+   is not found, it will proceed to query other DNS servers.
+
+b. ``Root DNS Servers:`` The resolver starts by querying one of the root DNS servers,
+   which will respond with a referral to a TLD (Top-Level Domain) server (e.g., .com, .net).
+
+c. ``TLD DNS Servers:`` The resolver then queries the TLD server, which responds
+   with a referral to the authoritative DNS server for the specific domain.
+
+d. ``Authoritative DNS Server:`` Finally, the resolver queries the authoritative DNS server,
+   which provides the IP address for the domain.
+
+``Response Back to Browser:`` Once the IP address is obtained, it is sent back to the browser,
+which can then establish a connection to the web server.
+
+``Caching:`` Throughout this process, each layer of DNS resolvers caches the IP address
+to improve the speed of future queries.
+
 ARP process
 -----------
 
