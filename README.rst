@@ -225,7 +225,7 @@ DNS lookup
   the ``ARP process`` below for the default gateway IP.
 
 
-  DNS Resolution Process
+  ***DNS Resolution Process**
 When you type a URL in the browser and hit enter, the browser needs to resolve
 the domain name to an IP address. This process involves several steps:
 
